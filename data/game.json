@@ -4,8 +4,11 @@
         "start": {
 			"text": "",
 			"image_change": "<img src=\"Images/Car_Driving.jpg\">",
-			"set_sound" : "pause",
 			"show_button": "Play",
+			"hide_button": "C",
+			"hide_restart_button": "Restart",
+			"set_sound" : "pause",
+			"show_rewind_button": "False",
             "next_state": [
 				{
 					"state_name": "begin",
@@ -19,6 +22,9 @@
 			"show_button": "ABC",
 			"init_back_ground_music" : "audio/ambience_night.mp3",	
 			"set_back_ground_music" : "play",
+			"set_sound" : "pause",
+			"hide_restart_button": "Restart",
+			"show_rewind_button": "True",
 			"next_state": [
                 {
                     "state_name": "approach_mansion",
@@ -41,6 +47,7 @@
 			"play_sound" : "audio/car_failing_to_start.mp3",	
 			"set_sound" : "play",
 			"delay_scene" : "5000",
+			"hide_restart_button": "Restart",
 			"next_state": [
                 {
                     "state_name": "approach_mansion",
@@ -56,6 +63,8 @@
 			"text": "On your way to the mansion, you notice a shed<br>off into the forest.<br><br>A: Continue walking to The Mansion<br>B: Approach the shed",
 			"image_change": "<img src=\"Images/The_Mansion.jpg\">",
 			"hide_button" : "C",
+			"hide_restart_button": "Restart",
+			"set_sound" : "pause",
 			"next_state": [
                 {
                     "state_name": "approach_mansion_door",
@@ -71,6 +80,8 @@
 			"text": "You wait for a while, but no cars show up. You begin<br>to worry. If you don't do something, you might not<br>survive. You see a shed in the distance.<br><br>A: Approach the shed<br>B: Do literally nothing",
 			"image_change": "<img src=\"Images/Waiting_On_Road.jpg\">",
 			"hide_button" : "C",
+			"hide_restart_button": "Restart",
+			"set_sound" : "pause",
 			"next_state": [
                 {
                     "state_name": "approach_shed",
@@ -86,6 +97,7 @@
 			"text": "For some reason, you decide to do literally nothing. You<br>wait, and wait, and wait, and nothing happens. You're<br>hungry, but you don't care. You're thirsty, but you don't<br>care. You just sit there and do nothing... How fun...<br><br>Game Over",
 			"image_change": "<img src=\"Images/Game_Over.jpg\">",
 			"show_button": "Restart",
+			"hide_button": "C",
 			"set_sound" : "play",
 			"play_sound" : "audio/slow_clap.mp3",	
 			"delay_scene" : "1000",
@@ -103,6 +115,7 @@
 			"play_sound" : "audio/snoring.mp3",	
 			"delay_scene" : "1000",
 			"show_button" : "C",
+			"hide_restart_button": "Restart",
 			"next_state": [
                 {
                     "state_name": "approach_mansion_door",
@@ -124,6 +137,8 @@
 			"set_sound" : "play",
 			"play_sound" : "audio/knock_on_shed.mp3",	
 			"delay_scene" : "1000", 
+			"hide_button": "C",
+			"hide_restart_button": "Restart",
 			"next_state": [
                 {
                     "state_name": "approach_mansion_door",
@@ -141,6 +156,8 @@
 			"set_sound" : "play",
 			"play_sound" : "audio/shed_latch.mp3",	
 			"delay_scene" : "1000", 
+			"hide_button": "C",
+			"hide_restart_button": "Restart",
 			"next_state": [
                 {
                     "state_name": "panic",
@@ -159,6 +176,7 @@
 			"set_sound" : "play",
 			"play_sound" : "audio/cartoon_scream.mp3",	
 			"delay_scene" : "1000",
+			"hide_button": "C",
 			"next_state": [
                 {
                     "state_name": "start",
@@ -173,6 +191,7 @@
 			"play_sound" : "audio/hello_creature.mp3",	
 			"delay_scene" : "1000",
 			"show_button": "C",
+			"hide_restart_button": "Restart",
 			"next_state": [
 				{
                     "state_name": "choose_bat",
@@ -195,6 +214,7 @@
 			"play_sound" : "audio/dramatic_music.mp3",	
 			"delay_scene" : "1000",
 			"hide_button" : "C",
+			"hide_restart_button": "Restart",
 			"next_state": [
                 {
                     "state_name": "run_bat",
@@ -212,6 +232,8 @@
 			"set_sound" : "play",
 			"play_sound" : "audio/dramatic_music.mp3",	
 			"delay_scene" : "1000",
+			"hide_button": "C",
+			"hide_restart_button": "Restart",
 			"next_state": [
                 {
                     "state_name": "run_bat",
@@ -230,6 +252,7 @@
 			"play_sound" : "audio/running_from_creature.mp3",	
 			"delay_scene" : "1000",
 			"show_button" : "Restart",
+			"hide_button": "C",
 			"next_state": [
                 {
                     "state_name": "start",
@@ -244,6 +267,7 @@
 			"play_sound" : "audio/hitting_creature.mp3",	
 			"delay_scene" : "1000",
 			"show_button" : "Restart",
+			"hide_button": "C",
 			"next_state": [
                 {
                     "state_name": "start",
@@ -257,6 +281,8 @@
 			"set_sound" : "play",
 			"play_sound" : "audio/success.mp3",	
 			"delay_scene" : "1000",
+			"hide_button": "C",
+			"hide_restart_button": "Restart",
 			"next_state": [
                 {
                     "state_name": "get_me_out",
@@ -272,6 +298,8 @@
 			"text": "The owl's eyes gleam with a mystical hue, and<br>forthcame a car, brand new. The owl then says:<br><br>\"To safety, it whisks you away without delay,<br>Guiding you through the night, leading the way.\"<br><br>You get in the car and drive to safety!<br><br>Well Done",
 			"image_change": "<img src=\"Images/Cadillac.jpg\">",
 			"show_button" : "Restart",
+			"hide_button": "C",
+			"set_sound" : "pause",
 			"next_state": [
                 {
                     "state_name": "start",
@@ -285,6 +313,8 @@
 			"set_sound" : "play",
 			"play_sound" : "audio/squeaky_toy.mp3",	
 			"delay_scene" : "1000",
+			"hide_button": "C",
+			"hide_restart_button": "Restart",
 			"next_state": [
                 {
                     "state_name": "so_fluffy",
@@ -300,6 +330,8 @@
 			"text": "Unfortunately, this angered the owl, so she<br>decided to eat you.<br><br>Game Over",
 			"image_change": "<img src=\"Images/Game_Over.jpg\">",
 			"show_button": "Restart",
+			"hide_button": "C",
+			"set_sound" : "pause",
 			"next_state": [
                 {
                     "state_name": "start",
@@ -311,6 +343,8 @@
 			"text": "After the owl revealed her true form, she said:<br><br>\"Once a wish I've granted true,<br>A second boon I offer you.\"<br><br>Then she picked you up<br>and carried you to safety.<br><br>Well Done",
 			"image_change": "<img src=\"Images/Owl_Carrying_Man.jpg\">",
 			"show_button" : "Restart",
+			"hide_button": "C",
+			"set_sound" : "pause",
 			"next_state": [
                 {
                     "state_name": "start",
@@ -323,6 +357,8 @@
 			"image_change": "<img src=\"Images/Mansion_Door_Main.jpg\">",
 			"set_sound" : "pause",
 			"hide_button" : "C",
+			"hide_restart_button": "Restart",
+			"set_second_sound" : "pause",
 			"next_state": [
                 {
                     "state_name": "break_in",
@@ -335,13 +371,15 @@
             ]
         },
 		"break_in": {
-			"text": "You see a window off to the left. You grab the nearest rock,<br>and start hitting the window as hard as you can. The<br>window breaks. You can't see inside. After the window breaks,<br>you hear the mansion door slowly creak open all by itself.<br><br>A: Climb in window<br>B: Enter through the main Mansion entrance",
+			"text": "You see a window off to the left. You grab the nearest rock,<br>and start hitting the window as hard as you can. The<br>window breaks. You can't see inside. After the window breaks,<br>you hear The Mansion door slowly creak open all by itself.<br><br>A: Climb in window<br>B: Enter through the main Mansion entrance",
 			"image_change": "<img src=\"Images/Shattered_Window.jpg\">",
 			"set_sound" : "play",
 			"play_sound" : "audio/window_breaking.mp3",	
 			"delay_scene" : "1000",
 			"play_second_sound" : "audio/squeaky_door.mp3",	
-			"second_sound_delay" : "2000",
+			"second_sound_delay" : "3000",
+			"hide_button": "C",
+			"hide_restart_button": "Restart",
 			"next_state": [
                 {
                     "state_name": "climb_in",
@@ -359,7 +397,10 @@
 			"set_back_ground_music" : "pause",
 			"set_sound" : "play",
 			"play_sound" : "audio/girl_hello.mp3",	
+			"set_second_sound" : "pause",
 			"delay_scene" : "1000",
+			"hide_button": "C",
+			"hide_restart_button": "Restart",
 			"next_state": [
                 {
                     "state_name": "climb_under_bed",
@@ -372,11 +413,13 @@
             ]
         },
 		"climb_under_bed": {
-			"text": "You quickly hide under her bed. A large creature comes<br>walking in. You can only see it's feet but you know<br>it's not human. She tells the creature that she broken her<br>window by accident when she was moving a cabinet. The<br>creature believes her and leaves the room. The<br>girl closes the door, gestures you to get out from under<br>the bed and she lets you use her phone to call for help. <br><br>A: Ask her what this place is<br>B: Return through the window and wait for help to come",
+			"text": "You quickly hide under her bed. A large creature comes<br>walking in. You can only see it's feet but you know<br>it's not human. She tells the creature that she broken her<br>window by accident when she was moving a cabinet. The<br>creature believes her and leaves the room. The<br>girl closes the door, gestures you to get out from under<br>the bed and lets you use her phone to call for help. <br><br>A: Ask her what this place is (You still survive)<br>B: Return through the window and wait for help to come",
 			"image_change": "<img src=\"Images/Creature_Feet_3.jpg\">",
 			"set_sound" : "play",
 			"play_sound" : "audio/monster_footsteps.mp3",	
 			"delay_scene" : "1000",
+			"hide_button": "C",
+			"hide_restart_button": "Restart",
 			"next_state": [
                 {
                     "state_name": "ask_poppy_about_mansion",
@@ -392,6 +435,8 @@
 			"text": "As you attempt to climb out the window, you cut<br>your arm on a piece of glass. The creature smells<br>this and comes bursting through the door, grabs<br>you, and goes to town.<br><br>Game Over",
 			"image_change": "<img src=\"Images/Game_Over.jpg\">",
 			"show_button" : "Restart",
+			"hide_button": "C",
+			"set_sound" : "pause",
 			"next_state": [
                 {
                     "state_name": "start",
@@ -400,8 +445,11 @@
             ]
         },
 		"ask_poppy_about_mansion": {
-			"text": "She says, \"This mansion is owned by the Lockheart family. They are not<br>the most kind hearted people. You'd do best to avoid<br>coming in contact with anyone else here. They have a<br>particular appetite for new visitors.\"<br><br>A: Why didn't that creature just attack you?<br>B: What is in the shed?",
+			"text": "She says,<br>\"This mansion is owned by the Lockheart family. They are not<br>the most kind hearted people. You'd do best to avoid<br>coming in contact with anyone else here. They have a<br>particular appetite for new visitors.\"<br><br>A: Why didn't that creature just attack you?<br>B: What is in the shed?",
 			"image_change": "<img src=\"Images/Woman_Sitting_Down.jpg\">",
+			"hide_button": "C",
+			"set_sound" : "pause",
+			"hide_restart_button": "Restart",
 			"next_state": [
                 {
                     "state_name": "poppy_question_bubbles",
@@ -416,6 +464,9 @@
 		"poppy_question_bubbles": {
 			"text": "\"That specific creature is named Bubbles. He's been my guardian ever<br>since I was a child. He is extrodonarily protective of me.<br>Had you not gotten under the bed, I'm not sure what<br>he would've done. He spends the majority of<br>his time outside, wandering the forest. The sound<br>of the window cracking must have drawn<br>him back inside.\"<br><br>A: Thank Poppy for the help and leave<br>B: \"What is in the shed\"",
 			"image_change": "<img src=\"Images/Woman_Sitting_Down.jpg\">",
+			"hide_button": "C",
+			"set_sound" : "pause",
+			"hide_restart_button": "Restart",
 			"next_state": [
                 {
                     "state_name": "thanks_poppy",
@@ -430,6 +481,9 @@
 		"poppy_question_shed": {
 			"text": "That creature is particularly unpredictable and very powerful.<br>I had to lock it in the shed a while back because<br>it has a tendency to test those who speak to it. If<br>you answer wrong, she becomes extremely aggressive.<br>Tread carefully.<br><br>A: Thank Poppy for the help and leave<br>B: Why didn't that creature just attack you?",
 			"image_change": "<img src=\"Images/Woman_Sitting_Down.jpg\">",
+			"hide_button": "C",
+			"set_sound" : "pause",
+			"hide_restart_button": "Restart",
 			"next_state": [
                 {
                     "state_name": "thanks_poppy",
@@ -445,6 +499,8 @@
 			"text": "You climb back out the window and return to<br>your car until help arrives.<br><br>Well Done",
 			"image_change": "<img src=\"Images/Police_Car.jpg\">",
 			"show_button" : "Restart",
+			"hide_button": "C",
+			"set_sound" : "pause",
 			"next_state": [
                 {
                     "state_name": "start",
@@ -458,6 +514,8 @@
 			"set_sound" : "play",
 			"play_sound" : "audio/squeaky_door.mp3",	
 			"delay_scene" : "1000",
+			"hide_button": "C",
+			"hide_restart_button": "Restart",
 			"next_state": [
                 {
                     "state_name": "enter_mansion",
@@ -476,6 +534,8 @@
 			"set_sound" : "play",
 			"play_sound" : "audio/door_slams_shut.mp3",	
 			"delay_scene" : "1000",
+			"hide_button": "C",
+			"hide_restart_button": "Restart",
 			"next_state": [
                 {
                     "state_name": "go_hallway",
@@ -490,6 +550,10 @@
 		"go_hallway": {
 			"text": "On your way down the hallway, you notice a old<br>looking piano with a note on it that says,<br>\"Do not touch.\"<br><br>A: Touch the piano<br>B: Listen to the note and continue walking",
 			"image_change": "<img src=\"Images/Piano_In_Hallway.jpg\">",
+			"hide_button": "C",
+			"set_sound" : "pause",
+			"hide_restart_button": "Restart",
+			"set_second_sound" : "pause",
 			"next_state": [
                 {
                     "state_name": "touch_piano",
@@ -510,6 +574,7 @@
 			"play_second_sound" : "audio/piano_playing_on_it's_own.mp3",	
 			"second_sound_delay" : "3000",
 			"show_button": "Restart",
+			"hide_button": "C",
 			"next_state": [
                 {
                     "state_name": "start",
@@ -523,6 +588,8 @@
 			"set_sound" : "play",
 			"play_sound" : "audio/heavens_gates.mp3",	
 			"delay_scene" : "0",
+			"hide_button": "C",
+			"hide_restart_button": "Restart",
 			"next_state": [
                 {
                     "state_name": "eat_food",
@@ -541,6 +608,7 @@
 			"set_sound" : "play",
 			"play_sound" : "audio/crying.mp3",
 			"show_button" : "Restart",
+			"hide_button": "C",
 			"next_state": [
                 {
                     "state_name": "start",
@@ -551,6 +619,9 @@
 		"go_to_basement": {
 			"text": "You make your way to the basement staircase.<br>On the way down, you see an antique pistol<br>and a wand laying on a table.<br><br>A: Grab the pistol<br>B: Grab the wand",
 			"image_change": "<img src=\"Images/Pistol_And_Wand.jpg\">",
+			"hide_button": "C",
+			"set_sound" : "pause",
+			"hide_restart_button": "Restart",
 			"next_state": [
                 {
                     "state_name": "grab_pistol",
@@ -565,6 +636,9 @@
 		"grab_pistol": {
 			"text": "Once you grab the pistol, you notice a large monster<br>down at the end of the hallway. It starts<br>to run towards you with violent intent.<br><br>A: Shoot Monster!<br>B: Run!",
 			"image_change": "<img src=\"Images/Basement_Monster.jpg\">",
+			"hide_button": "C",
+			"set_sound" : "pause",
+			"hide_restart_button": "Restart",
 			"next_state": [
                 {
                     "state_name": "shoot_gun",
@@ -579,11 +653,12 @@
 		"shoot_gun": {
 			"text": "You take aim and unload the clip!!!<br>The monster falls to the ground. You take a<br>deep breath of relief only to hear loud roars<br>coming from the rest of the basement. The<br>creatures family takes revenge and you<br>become dinner.<br><br>Game Over",
 			"image_change": "<img src=\"Images/Game_Over.jpg\">",
-			"show_button" : "Restart",
 			"set_back_ground_music" : "pause",
 			"set_sound" : "play",
 			"play_sound" : "audio/pistol_cocking.mp3",
 			"delay_scene" : "1000",
+			"show_button" : "Restart",
+			"hide_button": "C",
 			"next_state": [
                 {
                     "state_name": "start",
@@ -594,10 +669,11 @@
 		"run_with_gun": {
 			"text": "You run back upstairs quickly with the monster tailing you.<br>You see a window, shoot it, and jump through.<br>The monster is too big to follow you through.<br> You see a bike next to a hedge. You get on<br>the bike and use it to get to safety.<br><br>Well Done",
 			"image_change": "<img src=\"Images/Forest_Win_game.jpg\">",
-			"show_button" : "Restart",
 			"set_sound" : "play",
 			"play_sound" : "audio/window_breaking.mp3",
 			"delay_scene" : "1000",
+			"show_button" : "Restart",
+			"hide_button": "C",
 			"next_state": [
                 {
                     "state_name": "start",
@@ -608,6 +684,9 @@
 		"grab_wand": {
 			"text": "Once you grab the wand, you notice a large monster<br> down at the end of the hallway.<br>It starts to run towards you with violent intent.<br><br>A: Attempt to cast a spell!<br>B: Drop the wand and run!",
 			"image_change": "<img src=\"Images/Basement_Monster.jpg\">",
+			"hide_button": "C",
+			"set_sound" : "pause",
+			"hide_restart_button": "Restart",
 			"next_state": [
                 {
                     "state_name": "cast_spell",
@@ -626,6 +705,7 @@
 			"set_sound" : "play",
 			"play_sound" : "audio/Incendio.mp3",
 			"delay_scene" : "1000",
+			"hide_button": "C",
 			"next_state": [
                 {
                     "state_name": "start",
@@ -637,6 +717,8 @@
 			"text": "You scream and run while flailing your hands! The creature<br>chases you into the dining room where you start throwing<br>food, dishes, candle sticks, and anything else you<br>can get your hands on at it. It charges you and<br>you barely dodge it's attack. It eventually catches<br>and eats you. You did not die with dignity.<br><br>Game Over",
 			"image_change": "<img src=\"Images/Game_Over.jpg\">",
 			"show_button": "Restart",
+			"hide_button": "C",
+			"set_sound" : "pause",
 			"next_state": [
                 {
                     "state_name": "start",
@@ -648,6 +730,8 @@
 			"text": "\"Aw hell no!!!\"<br>You've seen too many horror movies and<br>you know where this is going. You<br>return to your car and die of starvation.<br><br>Game Over",
 			"image_change": "<img src=\"Images/Game_Over.jpg\">",
 			"show_button" : "Restart",
+			"hide_button": "C",
+			"set_sound" : "pause",
 			"next_state": [
                 {
                     "state_name": "start",

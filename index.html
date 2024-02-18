@@ -20,6 +20,10 @@
 		<button id="but_c" onclick="key_input('C');" style="display:none;">C</button>
 		<button id="but_restart" onclick="key_input('Restart');" style="display:none;">Restart</button>
 	</div>
+	<div class="button-container">
+		<button id="but_rewind" onclick="key_input('Rewind');" style="display:none;">Rewind</button>
+	</div>
+	<div id ="tip_rewind">Tip: Rewind button has one use per run</div>
 </div>
 
 <div id="splash"> Loading<br>
@@ -29,6 +33,8 @@
 <script>
 var game_data;
 var current_state;
+var previous_state;
+var rewind_button_used = false;
 
 var audioElementBGM;
  var audioElementSound;
@@ -74,6 +80,7 @@ function reset_game_states() {
 	$('#but_a').hide();
     $('#but_b').hide();
 	$('#but_restart').hide();
+	rewind_button_used == false;
 }
 
 function hide_A_B_Buttons() {
@@ -91,7 +98,7 @@ function show_loading_screen() {
             $('#main').show();
             }, 2000);
 }
-			
+
 $.getJSON("data/game.json", function(data) {
     game_data = data;
 	load_game_states()
@@ -99,6 +106,7 @@ $.getJSON("data/game.json", function(data) {
 });
 
 function next_state(state) {
+	previous_state = current_state;
     console.log("Previous State = " + current_state + " --> Current State = " + state);
 	current_state = state;
 	
@@ -142,6 +150,12 @@ function next_state(state) {
 		}
     }
 	
+	if (audioElementSoundSecond != null) {
+		if (game_data['states'][ current_state ]['set_second_sound'] == 'pause') {
+			audioElementSoundSecond.play();
+		}
+	}
+	
 	if (game_data['states'][ current_state ]['set_sound'] == 'play') {
 		if (audioElementSound != null) {
 			audioElementSound.play();
@@ -152,14 +166,25 @@ function next_state(state) {
 			audioElementSound.currentTime = 0;
 			audioElementSound.pause();
 		}
+		if (audioElementSoundSecond != null) {
+			audioElementSoundSecond.currentTime = 0;
+			audioElementSoundSecond.pause();
+		}
 	}
 	
 	if (game_data['states'][ current_state ]['delay_scene'] != null) {
-		hide_A_B_Buttons()
+		hide_A_B_Buttons();
+		$('#but_rewind').hide();
 		setTimeout(function(){
 			show_A_B_buttons();
 			proceed_with_state_change();
 			}, game_data['states'][ current_state ]['delay_scene']);
+		if (rewind_button_used == false) {
+			setTimeout(function(){
+				$('#but_rewind').show();
+				console.log("#but_rewind.show()");
+				}, game_data['states'][ current_state ]['delay_scene']);
+		}
 	} else {
 		/*no delay*/
 		proceed_with_state_change();
@@ -177,6 +202,11 @@ function proceed_with_state_change() {
 	if (game_data['states'][ current_state ]['image_change'] != null){
 		$("#game_image").html( game_data['states'][ current_state ]['image_change'] );
 	}
+	
+	if (game_data['states'][ current_state ]['show_rewind_button'] == "True") {
+		$('#but_rewind').show();
+	}
+	
 	/*show_button*/
 	if (game_data['states'][ current_state ]['show_button'] != null) {
 		if (game_data['states'][ current_state ]['show_button'] == 'Play') {
@@ -190,6 +220,7 @@ function proceed_with_state_change() {
 			$('#but_c').show();
 		}
 		if (game_data['states'][ current_state ]['show_button'] == 'ABC') {
+			$('#tip_rewind').hide();
 			show_A_B_C_buttons();
 		}
 		if (game_data['states'][ current_state ]['show_button'] == 'Restart') {
@@ -201,22 +232,35 @@ function proceed_with_state_change() {
 	}
 	if (game_data['states'][ current_state ]['hide_button'] != null) {
 			if (game_data['states'][ current_state ]['hide_button'] == 'C') {
-			$('#but_c').hide();
+				$('#but_c').hide();
+			}
+	}
+	if (game_data['states'][ current_state ]['hide_restart_button'] != null) {
+		if (game_data['states'][ current_state ]['hide_restart_button'] == 'Restart') {
+			$('#but_restart').hide();
 		}
 	}
+
 }
 
 function key_input(what_key){
-    for(i=0; i < game_data['states'][current_state]['next_state'].length; i++){
-        if( what_key == game_data['states'][current_state]['next_state'][i]['key_input']) {
-            var nextStateName = game_data['states'][current_state]['next_state'][i]['state_name'];
-				console.log('***Inside key_input***');
-				console.log("key input: " + what_key);
-				console.log("state: " + nextStateName);
-				console.log("***********************");
-                next_state(nextStateName);
-        } 
-    }
+	if (what_key == "Rewind") {
+		next_state(previous_state);
+		$('#but_rewind').hide();
+		rewind_button_used = true;
+		console.log("Got to rewind_button_used");
+	} else {
+		for(i=0; i < game_data['states'][current_state]['next_state'].length; i++){
+			if( what_key == game_data['states'][current_state]['next_state'][i]['key_input']) {
+				var nextStateName = game_data['states'][current_state]['next_state'][i]['state_name'];
+					console.log('***Inside key_input***');
+					console.log("key input: " + what_key);
+					console.log("state: " + nextStateName);
+					console.log("***********************");
+					next_state(nextStateName);
+			} 
+		}
+	}
 }
 </script>
 </body>

@@ -29,6 +29,14 @@ body {
 	font-family: 'Almendra', serif;
 }
 
+#tip_rewind {
+    font-size: 20px;
+    color: white;
+	font-family: 'Almendra', serif;
+	max-width: 100%;
+	text-align: center; 
+}
+
 #game_text {
 	display: none;
     font-size: 25px;
@@ -74,5 +82,10 @@ body {
 
 #but_restart {
 	font-size: 42px;
+	margin: 10px;
+}
+
+#but_rewind {
+	font-size: 30px;
 	margin: 10px;
 }
