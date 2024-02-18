@@ -1,0 +1,78 @@
+body, html {
+    height: 100%;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+	background-color: black;
+}
+
+body {
+	/*Default text color*/
+	color: white;
+}
+
+#main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    min-height: 100vh;
+	display: none;
+}
+
+#game_title {
+	font-size: 80px;
+    color: orange;
+	font-family: 'Almendra', serif;
+}
+
+#game_text {
+	display: none;
+    font-size: 25px;
+    color: white;
+	font-family: 'Almendra', serif;
+	max-width: 100%;
+	text-align: center; 
+}
+
+#splash {
+	font-size: 100px;
+	color: orange;
+	font-family: 'Almendra', serif;
+	text-align: center; 
+}
+
+#image {
+    display: flex;
+    justify-content: center;
+}
+
+/*Targets the actual image elements in the container*/
+#game_image img {
+	max-width: 80%; 
+    height: auto;
+}
+
+.button-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.button-container button {
+	font-size: 75px;
+	background-color: Gray;
+	font-family: 'Almendra', serif;
+	margin: 10px;
+	/*Text in the button's color*/
+	color: Orange;
+}
+
+#but_restart {
+	font-size: 42px;
+	margin: 10px;
+}

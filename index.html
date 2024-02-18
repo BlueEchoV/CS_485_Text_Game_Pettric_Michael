@@ -1,98 +1,222 @@
 <!DOCTYPE html>
 <html>
 <head>
-<script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+	<script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+	<link rel="stylesheet" href="styles.css">
+	<link href="https://fonts.googleapis.com/css2?family=Almendra&display=swap" rel="stylesheet">
+	<link rel="icon" type="image/x-icon" href="/images/favicon.ico">
 </head>
-<body style="background-image: url('imgs/background.gif');">
+<body style="background-color: black;">
 
-<div id="main" style="display:none">
-<div id="game_text" style="font-size:100px;color:white"></div>
-<div id="game_img"></div>
-<button id="but_a" onclick="key_input('A');" style="font-size:100px" >A</button>
-<button id="but_b" onclick="key_input('B');" style="font-size:100px">B</button>
-<button id="but_c" onclick="key_input('C');" style="font-size:100px;display:none" >C</button>
-<button id="but_d" onclick="key_input('D');" style="font-size:100px;display:none">D</button>
+<div id="main">
+	<div id="game_image"></div>
+	<div id ="game_title">The Mansion</div>
+	<div id="game_text"></div>
+	<div id="test"></div>
+	<div class="button-container">
+		<button id="but_play" onclick="key_input('Play');">Play</button>
+		<button id="but_a" onclick="key_input('A');" style="display:none;">A</button>
+		<button id="but_b" onclick="key_input('B');" style="display:none;">B</button>
+		<button id="but_c" onclick="key_input('C');" style="display:none;">C</button>
+		<button id="but_restart" onclick="key_input('Restart');" style="display:none;">Restart</button>
+	</div>
 </div>
 
-
-<div id="splash" style="font-size:100px"> Loading...<br>
-<img src="imgs/mario.gif">
+<div id="splash"> Loading<br>
+<img src="images/Pumpkin.gif">
  </div>
-
-<div id="splashy" style="font-size:100px;color:white;display:none"> Love Hhz<br>
-<img src="imgs/splashy.jpg">
- </div>
-
 
 <script>
 var game_data;
 var current_state;
 
+var audioElementBGM;
+ var audioElementSound;
+
 var stim = 0;
 var points = 0;
 
-setTimeout(function(){
+function show_A_B_buttons() {
+	$('#game_title').hide();
+	$('#game_text').show();
+	$('#but_play').hide();
+    $('#but_a').show();
+    $('#but_b').show();
+}
+
+function show_A_B_C_buttons() {
+	$('#game_title').hide();
+	$('#game_text').show();
+	$('#but_play').hide();
+    $('#but_a').show();
+    $('#but_b').show();
+    $('#but_c').show();
+}
+
+function load_game_states() {
+	current_state = game_data['start_state'];
+	$('#game_image').html(game_data['states'][current_state]['image_change']);
+	$('#game_title').show();
+	$('#game_text').hide();
+	$('#but_play').show();
+	$('#but_a').hide();
+    $('#but_b').hide();
+	$('#but_restart').hide();
+}
+
+function reset_game_states() {
+	audioElementBGM.pause();
+	audioElementBGM.currentTime = 0;
+	$('#game_image').html(game_data['states'][current_state]['image_change']);
+	$('#game_title').show();
+	$('#game_text').hide();
+	$('#but_play').show();
+	$('#but_a').hide();
+    $('#but_b').hide();
+	$('#but_restart').hide();
+}
+
+function hide_A_B_Buttons() {
+	$('#but_a').hide();
+    $('#but_b').hide();
+    $('#but_c').hide();
+}
+
+/*load the loading screen first thing*/
+show_loading_screen();
+
+function show_loading_screen() {
+	setTimeout(function(){
             $('#splash').hide();
-            $('#splashy').show();
-                setTimeout(function(){
-                        $('#splashy').hide();
-                        $('#main').show();
-                    },3000);
-
-            }, 3000);
-
-
-$.getJSON( "data/game.json", function( data ) {
-        game_data = data;
-        current_state = data['start_state'];
-        $('#game_text').html( game_data['states'][ data['start_state'] ]['text'] ); 
-
+            $('#main').show();
+            }, 2000);
+}
+			
+$.getJSON("data/game.json", function(data) {
+    game_data = data;
+	load_game_states()
+	console.log("Current State = " + current_state) 
 });
 
-function next_state( state) {
-    console.log("Current State = " + current_state + " --> New State= " + state) 
-    current_state = state
-    if (game_data['states'][ current_state ]['text'] != null){
+function next_state(state) {
+    console.log("Previous State = " + current_state + " --> Current State = " + state);
+	current_state = state;
+	
+	/*audio background music*/
+	if (game_data['states'][ current_state ]['init_back_ground_music'] != null){
+        audioElementBGM = document.createElement('audio');
+        audioElementBGM.setAttribute('src', game_data['states'][ current_state ]['init_back_ground_music']);
+    } 
+	
+	if (game_data['states'][ current_state ]['set_back_ground_music'] == 'play') {
+		if (audioElementBGM != null) {
+			audioElementBGM.play();
+		}
+	}
+	
+	if (game_data['states'][ current_state ]['set_back_ground_music'] == 'pause') {
+		if (audioElementBGM != null) {
+			console.log("Pausing audioElementBGM");
+			audioElementBGM.currenttime = 0;
+			audioElementBGM.pause();
+		}
+	}
+	
+	/*audio*/
+	if (game_data['states'][ current_state ]['play_sound'] != null){
+		if (audioElementSound != null) {
+			audioElementSound.pause();
+		}
+        audioElementSound = document.createElement('audio');
+        audioElementSound.setAttribute('src', game_data['states'][ current_state ]['play_sound']);
+    }
+	
+	if (game_data['states'][ current_state ]['play_second_sound'] != null){
+		var audioElementSoundSecond = document.createElement('audio');
+        audioElementSoundSecond = document.createElement('audio');
+        audioElementSoundSecond.setAttribute('src', game_data['states'][ current_state ]['play_second_sound']);
+		if (game_data['states'][ current_state ]['second_sound_delay'] != null) {
+			setTimeout(function(){
+				audioElementSoundSecond.play();
+				}, game_data['states'][ current_state ]['second_sound_delay']);
+		}
+    }
+	
+	if (game_data['states'][ current_state ]['set_sound'] == 'play') {
+		if (audioElementSound != null) {
+			audioElementSound.play();
+		}
+	}
+	if (game_data['states'][ current_state ]['set_sound'] == 'pause') {
+		if (audioElementSound != null) {
+			audioElementSound.currentTime = 0;
+			audioElementSound.pause();
+		}
+	}
+	
+	if (game_data['states'][ current_state ]['delay_scene'] != null) {
+		hide_A_B_Buttons()
+		setTimeout(function(){
+			show_A_B_buttons();
+			proceed_with_state_change();
+			}, game_data['states'][ current_state ]['delay_scene']);
+	} else {
+		/*no delay*/
+		proceed_with_state_change();
+	}
+}
+
+function proceed_with_state_change() {
+	/*game_text*/
+	if (game_data['states'][ current_state ]['text'] != null) { 
         $('#game_text').html( game_data['states'][ current_state ]['text'] );
     } else {
         console.log("no text");
-        if (game_data['states'][ current_state ]['stim_change'] != null){
-            console.log("+ stim " + game_data['states'][ current_state ]['stim_change'] ) 
-            stim = stim + game_data['states'][ current_state ]['stim_change']
-        }
-        if (game_data['states'][ current_state ]['point_change'] != null){
-            console.log("+ point " + game_data['states'][ current_state ]['stim_change'] ) 
-            points = points + game_data['states'][ current_state ]['point_change']
-        }
-        if (game_data['states'][ current_state ]['image_change'] != null){
-            $("#game_img").html( game_data['states'][ current_state ]['image_change'] );
-        }
-        if (game_data['states'][ current_state ]['show_button'] != null){
-            console.log('111');
-            console.log(game_data['states'][ current_state ]['show_button'])
-            $("#but_" + game_data['states'][ current_state ]['show_button']).show();
-        }
-
-        next_state( game_data['states'][ current_state ]['next_state']) 
     }
-}
-
-function pick_a_winner( input_array ) {
-   return  input_array[(Math.floor(Math.random() * input_array.length))];
+	/*image_change*/
+	if (game_data['states'][ current_state ]['image_change'] != null){
+		$("#game_image").html( game_data['states'][ current_state ]['image_change'] );
+	}
+	/*show_button*/
+	if (game_data['states'][ current_state ]['show_button'] != null) {
+		if (game_data['states'][ current_state ]['show_button'] == 'Play') {
+			console.log("Current button = Play") ;
+			reset_game_states();
+		}
+		if (game_data['states'][ current_state ]['show_button'] == 'AB') {
+			show_A_B_buttons();
+		}
+		if (game_data['states'][ current_state ]['show_button'] == 'C') {
+			$('#but_c').show();
+		}
+		if (game_data['states'][ current_state ]['show_button'] == 'ABC') {
+			show_A_B_C_buttons();
+		}
+		if (game_data['states'][ current_state ]['show_button'] == 'Restart') {
+			$('#but_a').hide();
+			$('#but_b').hide();
+			$('#but_c').hide();
+			$('#but_restart').show();
+		}
+	}
+	if (game_data['states'][ current_state ]['hide_button'] != null) {
+			if (game_data['states'][ current_state ]['hide_button'] == 'C') {
+			$('#but_c').hide();
+		}
+	}
 }
 
 function key_input(what_key){
-    for(i=0; i< game_data['states'][current_state]['next_state'].length; i++){
+    for(i=0; i < game_data['states'][current_state]['next_state'].length; i++){
         if( what_key == game_data['states'][current_state]['next_state'][i]['key_input']) {
-            if ( typeof game_data['states'][current_state]['next_state'][i]['state_name'] == "string"){
-                next_state(game_data['states'][current_state]['next_state'][i]['state_name'])
-            }else{
-                next_state(pick_a_winner(game_data['states'][current_state]['next_state'][i]['state_name']) )
-            }
+            var nextStateName = game_data['states'][current_state]['next_state'][i]['state_name'];
+				console.log('***Inside key_input***');
+				console.log("key input: " + what_key);
+				console.log("state: " + nextStateName);
+				console.log("***********************");
+                next_state(nextStateName);
         } 
     }
-
-    console.log(what_key);
 }
 </script>
 </body>
